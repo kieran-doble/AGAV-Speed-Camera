@@ -1,0 +1,26 @@
+function [distance, speedMPH] = calcSpeed(carPixelsFromBottomOfImageFirst, carPixelsFromBottomOfImageLast)
+    degreesFromVertical = 90 - 30 - ((640 *0.042)/2);
+    carViewAngleFromVerticalFirst = degreesFromVertical + (carPixelsFromBottomOfImageFirst * 0.042);
+    carViewAngleFromVerticalLast = (60   - ((640 * 0.042)/2)) + (carPixelsFromBottomOfImageLast * 0.042);
+    
+    display(carViewAngleFromVerticalFirst);
+    display(carViewAngleFromVerticalLast);
+
+    distanceFirst = 7 * abs(tand(carViewAngleFromVerticalFirst));
+    distanceLast = 7 * abs(tand(carViewAngleFromVerticalLast));
+    display(distanceFirst);
+    display(distanceLast);
+
+    changeInDistance = distanceLast - distanceFirst;
+    display(changeInDistance);
+
+    % v = d / t
+    speedMetersPerSecond = changeInDistance / 0.1; % m/s
+    display(speedMetersPerSecond)
+    speedMPH = speedMetersPerSecond * 2.23694;
+    display(speedMPH)
+    
+    distance = distanceFirst;
+    
+ 
+end
