@@ -1,4 +1,4 @@
-function [size, width] = carWidth(distance1, boundingBox)
+function [size, width] = carWidth(distanceFirst, boundingBox)
 % Gets the X coords from the bounding box.
 carXCoord = boundingBox(1);
 % Gets the width from the bounding box.
@@ -9,9 +9,9 @@ leftOfCarWidth = abs((480 / 2) - carXCoord) * 0.042;
 rightOfCarWidth = abs((480 / 2) - (carXCoord + carWidth)) * 0.042;
 % Adds both sides to return total width in degrees.
 widthdegrees = leftOfCarWidth + rightOfCarWidth;
-% Finds the square root of the cars first position mutipled by the tangent
-% of degrees of the width to return width in meters.
-width = sqrt(distance1.^2) * tand(widthdegrees);
+% F
+width = sqrt(distanceFirst.^2 + 7.^2) * tand(widthdegrees);
+
 
     if width > 2.5
       size = 'Too wide for tunnel.';

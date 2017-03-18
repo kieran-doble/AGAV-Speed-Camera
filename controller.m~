@@ -1,0 +1,6 @@
+function [speedText, speed, size, Width] = controller(image1, image2)
+  [boundingBoxCar1, distanceFirst] = imageDetection(image1);    
+  [boundingBoxCar2, distanceLast] = imageDetection(image2);
+  [distanceFirst, speed, speedText] = carSpeed(distanceFirst, distanceLast);
+  [Width, size] = carWidth(distanceFirst, boundingBoxCar1);    
+end
