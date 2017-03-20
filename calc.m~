@@ -1,6 +1,0 @@
-function [speedResult, speed, size, Width] = calc(image1, image2)
-  [boundingBoxCar1, distanceFirst] = imageDetection(image1);    
-  [boundingBoxCar2, distanceLast] = imageDetection(image2);
-  [carLocation, speed, speedResult] = carSpeed(distanceFirst, distanceLast);
-  [Width, size] = carWidth(carLocation, boundingBoxCar1);    
-end

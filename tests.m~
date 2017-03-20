@@ -1,7 +1,0 @@
-clc;
-clear;
-
-% Image 
-name = 'image: 1 & 2'; 
-[speed, speedText, size, width] = controller('001.jpg', '002.jpg');
-fprintf('%s | %iMPH %s  | %2.2fM %s \n', name, speedText, speed, size, width)

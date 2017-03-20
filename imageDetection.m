@@ -24,7 +24,8 @@ carErode = imerode(carFill, carFlat);
 carFlat2 = strel('square', 60);
 carDilate = imdilate(carErode, carFlat2);
 
-% measures properties of the image regions (bounding and centroids).
+% returns the regionprops of boundingBox, meaning x,y,z can be returned
+% along with the centroids.
 stats = regionprops(carDilate, 'BoundingBox', 'Centroid');
 boundingBox = stats.BoundingBox;
 centroid = stats.Centroid;
@@ -36,13 +37,14 @@ carMiddle = centroid(1,2);
 %allowing carspeed function to begin.
 carLocation = 640 - carMiddle;
 
-%figure, imshow(carDilate); hold on
 %{
-for row = 1 : size(boundingBox, 1)
-	rectangle('Position', boundingBox(row, :), 'EdgeColor', 'b', 'LineWidth', 2);
-	hold on;
-end
-%rectangle('Position', boundingBox, 'EdgeColor', 'blue');
+figure('Name', 'Original Car'), imshow(carImage); hold on
+figure('Name', 'hsv Car'), imshow(carHsv); hold on
+figure('Name', 'Binary Car'), imshow(carBinary); hold on
+figure('Name', 'Fill Car'), imshow(carFill); hold on
+figure('Name', 'Erode Car'), imshow(carErode); hold on
+figure('Name', 'Dilate Car'), imshow(carDilate); hold on
+rectangle('Position', boundingBox, 'EdgeColor', 'yellow', 'Linewidth', 2);
 for x = 1: numel(stats)
 plot(stats(x).Centroid(1),stats(x).Centroid(2),'ro');
 end
